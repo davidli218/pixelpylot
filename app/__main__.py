@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+from app.compress.compressor import main as compress_main
 from app.rename_sony_clip.task_pipeline import generate_tasks_from_dir
 from app.rename_sony_clip.task_pipeline import generate_tasks_from_file
 from app.rename_sony_clip.task_pipeline import process_tasks
@@ -16,6 +17,9 @@ def main():
     sony_clip_rename_parser.add_argument('-d', '--dry', action='store_true', help='Dry run.')
     sony_clip_rename_parser.add_argument('-s', '--strict', action='store_true', help='Strict mode.')
 
+    compress_parser = subparsers.add_parser('compress', help='Compress images')
+    compress_parser.add_argument('work_dest', nargs='?', default='.', help='Directory to process.')
+
     args = parser.parse_args()
 
     if args.command == 'rename-sony-clip':
@@ -29,6 +33,8 @@ def main():
             raise FileNotFoundError(f"File Not Found: {work_dest}")
 
         process_tasks(tasks, dry_run=args.dry)
+    elif args.command == 'compress':
+        compress_main(args.work_dest)
     else:
         parser.print_help()
 
