@@ -6,12 +6,12 @@ from datetime import datetime
 from pathlib import Path
 from xml.etree import ElementTree
 
-SPEC_MAPPING_FILE = Path(__file__).parent / 'res' / 'specs_mapping.toml'
+SPEC_MAPPING_FILE = Path(__file__).parent / 'config.toml'
 
 SpecsDict = namedtuple('SpecsDict', ['model', 'resolution', 'color_primaries', 'gamma_equation'])
 
 with SPEC_MAPPING_FILE.open('rb') as f:
-    load_dict = tomllib.load(f)
+    load_dict = tomllib.load(f)['sony-v']
 
     # Convert resolution from string to tuple
     load_dict['resolution'] = {tuple(map(int, k.split(','))): v for k, v in load_dict['resolution'].items()}

@@ -37,4 +37,4 @@ include = ["app*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-"app.rename" = ["res/specs_mapping.toml"]
+"app.rename" = ["config.toml"]
