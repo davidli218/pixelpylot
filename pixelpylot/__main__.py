@@ -1,7 +1,7 @@
 import argparse
 
-from app import compress
-from app import rename
+from pixelpylot import compress
+from pixelpylot import rename
 
 
 def main():

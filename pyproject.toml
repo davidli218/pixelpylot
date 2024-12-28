@@ -23,18 +23,18 @@ classifiers = [
 dynamic = ["version"]
 
 [project.scripts]
-pxp = "app.__main__:main"
+pxp = "pixelpylot.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/davidli218/pixelpylot"
 Issues = "https://github.com/davidli218/pixelpylot/issues"
 
 [tool.setuptools.dynamic]
-version = { attr = "app.__version__" }
+version = { attr = "pixelpylot.__version__" }
 
 [tool.setuptools.packages.find]
-include = ["app*"]
+include = ["pixelpylot*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-"app.rename" = ["config.toml"]
+"pixelpylot.rename" = ["config.toml"]
