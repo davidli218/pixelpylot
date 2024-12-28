@@ -33,5 +33,8 @@ Issues = "https://github.com/davidli218/pixelpylot/issues"
 version = { attr = "app.__version__" }
 
 [tool.setuptools.packages.find]
-include = ["app"]
+include = ["app*"]
 namespaces = false
+
+[tool.setuptools.package-data]
+"app.rename_sony_clip" = ["res/specs_mapping.toml"]
