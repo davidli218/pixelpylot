@@ -3,14 +3,14 @@ requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sony-clip-rename"
-description = "Rename Sony camera clips to a more human-readable format."
+name = "pixelpylot"
+description = "Photography post-production workflow automation CLI."
 requires-python = ">=3.11"
 authors = [
     { name = "Teii Ri", email = "teiiri@outlook.com" },
 ]
 readme = "README.md"
-keywords = ["sony", "camera", "rename", "cli"]
+keywords = ["photography", "workflow", "automation"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -23,11 +23,11 @@ classifiers = [
 dynamic = ["version"]
 
 [project.scripts]
-sony-clip-rename = "app.__main__:main"
+pxp = "app.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/davidli218/sony-clip-rename"
-Issues = "https://github.com/davidli218/sony-clip-rename/issues"
+Homepage = "https://github.com/davidli218/pixelpylot"
+Issues = "https://github.com/davidli218/pixelpylot/issues"
 
 [tool.setuptools.dynamic]
 version = { attr = "app.__version__" }

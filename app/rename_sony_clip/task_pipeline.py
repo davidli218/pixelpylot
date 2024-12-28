@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List
 
-from app.xml_parser import parse_xml
+from .xml_parser import parse_xml
 
 
 def get_video_files(directory: Path, extensions: List[str] = None) -> List[Path]:

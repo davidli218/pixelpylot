@@ -1,23 +1,22 @@
-# Sony Clip Rename
+# PixelPylot
 
-Renaming Sony Camera video clips in a consistent and user-friendly way.
+Photography post-production workflow automation CLI.
 
 ## Installation
 
 ```shell
-pip install git+https://github.com/davidli218/sony-clip-rename.git
+pip install git+https://github.com/davidli218/pixelpylot.git
 ```
 
 ## Usage
 
 ```
-sony-clip-rename [-h] [-d] [-s] work_dest
+pxp [-h] {rename-sony-clip} ...
 
 positional arguments:
-  work_dest     Directory or file to process.
+  {rename-sony-clip}  sub-command help
+    rename-sony-clip  Batch rename Sony clips
 
 options:
   -h, --help    show this help message and exit
-  -d, --dry     Dry run.
-  -s, --strict  Strict mode.
 ```
