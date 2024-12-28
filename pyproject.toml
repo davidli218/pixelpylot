@@ -37,4 +37,4 @@ include = ["app*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-"app.rename_sony_clip" = ["res/specs_mapping.toml"]
+"app.rename" = ["res/specs_mapping.toml"]
