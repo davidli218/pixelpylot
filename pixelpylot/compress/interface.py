@@ -9,7 +9,7 @@ def handle_args(input_dir):
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    image_paths = list(input_dir.glob('*.jpg')) + list(input_dir.glob('*.JPG'))
+    image_paths = [p for p in input_dir.iterdir() if p.is_file() and p.suffix.lower() == '.jpg']
 
     print(f"Found {len(image_paths)} images to process.")
     for image_path in image_paths:
