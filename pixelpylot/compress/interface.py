@@ -16,6 +16,6 @@ def handle_args(input_dir):
         print(f"Processing: {image_path}")
 
         output_path = output_dir / f"{image_path.stem}_x1706p{image_path.suffix}"
-        worker_ps(image_path, output_path)
+        worker_ps(str(image_path), str(output_path))
 
         print(f"Saved to: {output_path}")
