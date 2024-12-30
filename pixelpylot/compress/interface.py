@@ -1,15 +1,16 @@
 from pathlib import Path
+from typing import List
 
 from .compressor import worker_ps
 
 
-def handle_args(input_dir):
+def handle_args(input_dir: str):
     input_dir = Path(input_dir).absolute()
     output_dir = input_dir / 'output'
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    image_paths = [p for p in input_dir.iterdir() if p.is_file() and p.suffix.lower() == '.jpg']
+    image_paths: List[Path] = [p for p in input_dir.iterdir() if p.is_file() and p.suffix.lower() == '.jpg']
 
     print(f"Found {len(image_paths)} images to process.")
     for image_path in image_paths:

@@ -2,7 +2,7 @@ from PIL import Image
 from photoshop import Session
 
 
-def worker_pil(image_path, output_path, long_edge=1706, ppi=72, quality=10):
+def worker_pil(image_path: str, output_path: str, long_edge: int = 1706, ppi: int = 72, quality: int = 10):
     with Image.open(image_path) as img:
         width, height = img.size
 
@@ -19,7 +19,7 @@ def worker_pil(image_path, output_path, long_edge=1706, ppi=72, quality=10):
         img.save(output_path, quality=quality, dpi=(ppi, ppi), optimize=True)
 
 
-def worker_ps(image_path, output_path, long_edge=1706, ppi=72, quality=10):
+def worker_ps(image_path: str, output_path: str, long_edge: int = 1706, ppi: int = 72, quality: int = 10):
     with Session() as ps:
         doc = ps.app.open(image_path)
         width, height = doc.width, doc.height
