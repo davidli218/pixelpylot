@@ -4,7 +4,7 @@ from .compressor import worker_ps
 
 
 def handle_args(input_dir):
-    input_dir = Path(input_dir)
+    input_dir = Path(input_dir).absolute()
     output_dir = input_dir / 'output'
 
     output_dir.mkdir(parents=True, exist_ok=True)
