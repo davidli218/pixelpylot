@@ -1,15 +1,11 @@
-from pathlib import Path
-
+from PIL import Image
 from photoshop import Session
 
 
-def worker_ps(image_path, output_path, long_edge=1706, ppi=72, quality=10):
-    with Session() as ps:
-        doc = ps.app.open(image_path)
-        width = doc.width
-        height = doc.height
+def worker_pil(image_path, output_path, long_edge=1706, ppi=72, quality=10):
+    with Image.open(image_path) as img:
+        width, height = img.size
 
-        # 判断长边并计算比例
         if width > height:
             new_width = long_edge
             new_height = round((long_edge / width) * height)
@@ -17,16 +13,29 @@ def worker_ps(image_path, output_path, long_edge=1706, ppi=72, quality=10):
             new_height = long_edge
             new_width = round((long_edge / height) * width)
 
-        # 修改 PPI (分辨率)
+        img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+        img.info['dpi'] = (ppi, ppi)
+
+        img.save(output_path, quality=quality, dpi=(ppi, ppi), optimize=True)
+
+
+def worker_ps(image_path, output_path, long_edge=1706, ppi=72, quality=10):
+    with Session() as ps:
+        doc = ps.app.open(image_path)
+        width, height = doc.width, doc.height
+
+        if width > height:
+            new_width = long_edge
+            new_height = round((long_edge / width) * height)
+        else:
+            new_height = long_edge
+            new_width = round((long_edge / height) * width)
+
         doc.resizeImage(new_width, new_height, ppi, ps.ResampleMethod.Automatic)
 
-        # 设置保存选项 (JPEG)
         options = ps.JPEGSaveOptions()
-        options.quality = quality  # 最高质量
-        options.embedColorProfile = True  # 嵌入颜色配置文件
+        options.quality = quality
+        options.embedColorProfile = True
 
-        # 保存并关闭
         doc.saveAs(output_path, options)
         doc.close()
-
-
